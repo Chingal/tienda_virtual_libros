@@ -1,0 +1,50 @@
+<?php View::content(); ?>
+<?php echo form_tag('compras/add_to_cart/') ?>
+<body link="#3191F7" vlink="#3191F7" alink="#3191F7">
+<table width="100%">
+	<tr>
+		<td>
+			<h2><?php echo link_to(array("", 'Inicio'));$num=200; ?> > 
+			<?php if(Session::get("userName")=='admin') echo link_to(array("catalogo", 'Cat&aacute;logo'))?>
+			<?php if(Session::get("userName")!='admin') echo link_to(array("usuario", 'Cat&aacute;logo'))?> > Carrito de compras</h2>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<h3>Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?>-
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></h3>
+			<?php }
+			else{?>
+			<h3>Usted no ha iniciado sesi&oacute;n-
+			<?php echo link_to("",'Iniciar sesi&oacute;n');}?></h3>
+		</td>
+	</tr>
+	</table>
+<?php echo end_form_tag()?>
+<?php echo link_to("usuario",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:10%; clear:both; margin:2em 2em 1em 0;"); ?>
+<br/>
+<table border="1" width="70%" align="center" cellpadding="2">
+<tr>
+<td><strong>Titulo</strong></td>
+<td><strong>Valor unitario</strong></td>
+<td><strong>Cantidad</strong></td>
+<td><strong>Valor total</strong></td>
+<td><strong>Acciones</strong></td>
+</tr>
+<?php $j=0; ?>
+<?php for ($i=0;$i<$num;$i++){?>
+<?php $var = Session::get($i);?>
+<?php if(Session::isset_data($i)){?>
+<tr>
+	<td><?php echo $var[1];?></td>
+	<td><?php echo $var[2];?></td>
+	<td><strong><?php echo link_to(array("usuario/ver/$var[0]/", "$var[3]")) ?></strong></td>
+	<td><?php echo $var[2]*$var[3];?></td>
+	<?php $j=$j+($var[2]*$var[3]); ?>
+	<td><?php echo link_to(array("comprar/borrar_item/$var[0]/", 'Borrar'));?></td>
+</tr>
+<?php }}?>
+</table>
+<br/>
+<h4>TOTAL COMPRA: $<?php echo $j;?></h4>	
+<?php echo link_to("comprar/compra",'Comprar','title: Comprar',"class: button", "style: display:block; float:none; width:10%; clear:both; margin:2em 2em 1em 0;"); ?>
+<?php echo link_to("comprar/vaciar",'Vaciar carrito','title: Vaciar carrito',"class: button", "style: display:block; float:none; width:10%; clear:both; margin:2em 2em 1em 0;"); ?>

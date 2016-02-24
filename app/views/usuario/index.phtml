@@ -1,0 +1,59 @@
+<head>
+<div  class="content">
+    <?php echo View::content(); ?>
+	<?php echo form_tag('usuario/ver2') ?>
+	<body link="#3191F7" vlink="#3191F7" alink="#3191F7">
+<table width="100%">
+	<tr>
+		<td align="left">
+			<h2><?php echo link_to(array("", 'Inicio')) ?> > Cat&aacute;logo</h2>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<h3 align="right">Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?> -
+			<?php echo link_to("comprar/index",'Ir al carrito'); ?> -
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></h3>
+			<?php }
+			else{?>
+			<h3>Usted no ha iniciado sesi&oacute;n - 
+			<?php echo link_to("comprar/index",'Ir al carrito'); ?> -
+			<?php echo link_to("",'Iniciar sesi&oacute;n');}?></h3>
+		</td>
+	</tr>
+	</table><br/>
+	<?php echo text_field_tag("nombre") ?>
+	<?php echo submit_tag('Buscar') ?>
+	<?php echo end_form_tag() ?>
+	
+	<?php //echo link_to("usuario",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 0;"); ?>
+
+	
+	<h2 align="left">Cat&aacute;logo de libros</h2>
+	
+		
+	<table  border="0" width="100%" cellpadding="10" cellspacing="4">
+	
+    <?php foreach ($listCatalogo->items as $item) : ?>
+    <tr>
+		<td align="center">
+		<?php echo link_to(array("usuario/ver/$item->id/", img_tag('upload/'.$item->img,"width: 150","height: 187","title: Ver detalles"))); ?></td>
+		<td align="left"><strong>Nombre: <?php echo $item->titulo ?></strong><br/>
+		<strong>Autor: <?php echo $item->autor ?></strong><br/>
+		<strong>Precio: $<?php echo $item->precio ?></strong><br/>
+		<?php echo link_to(array("usuario/ver/$item->id/", 'Ver detalles')) ?><br/>
+		<?php echo link_to(array("comprar/agregar/$item->id/", img_tag('carrito.png',"width: 70","height: 70","title: Agregar al carrito" ))) ?></td>
+	</tr>
+	<?php endforeach; ?>	
+    </table>
+	
+	
+	<h5 align="center"><?php if($listCatalogo->prev) echo link_to(array("usuario/index/$listCatalogo->prev/", '<< Anterior |')); ?>
+    <?php if($listCatalogo->next) echo link_to(array("usuario/index/$listCatalogo->next/", 'Siguiente >>')); ?>
+	</h5>
+	
+	<br/>
+	
+	
+
+</div>
+

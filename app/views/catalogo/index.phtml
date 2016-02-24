@@ -1,0 +1,89 @@
+
+<div  class="content">
+    <?php echo View::content(); ?>
+	
+	
+	<table width="100%">
+	<tr>
+		<td>
+			<strong><?php echo link_to(array("", 'Inicio')) ?> > Cat&aacute;logo</strong>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<strong>Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?>-
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></strong>
+			<?php }
+			else{?>
+			<strong>Usted no ha iniciado sesi&oacute;n<?php }?></strong>
+		</td>
+	</tr>
+	</table>
+	
+	<h1 align="left">Cat&aacute;logo de libros</h1>
+	
+	<?php echo link_to("catalogo/create",'Agregar nuevo libro','title: Agregar nuevo libro',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 0;"); ?>
+	<table  frame= "box" border="2" width="100%" cellspacing="0" cellspacing="6">
+	<tr>
+		<td>
+			<strong>T&iacute;tulo</strong>
+		</td>
+		<td>
+			<strong>Cantidad</strong>
+		</td>
+		<td>
+			<strong>Autor</strong>
+		</td>
+		<td>
+			<strong>Editorial</strong>
+		</td>
+		<td>
+			<strong>Precio</strong>
+		</td>
+		<td>
+			<strong>Categor&iacute;a</strong>
+		</td>
+		<td>
+			<strong>Acciones</strong>
+		</td>
+	</tr>
+    <?php foreach ($listCatalogo->items as $item) : ?>
+    <tr>
+	<td>
+		<strong><?php echo $item->titulo ?></strong>
+	</td>
+	<td>
+		<strong><?php echo $item->cantidad ?></strong>
+	</td>
+	<td>
+		<strong><?php echo $item->autor ?></strong>
+	</td>
+	<td>
+		<strong><?php echo $item->editorial ?></strong>
+	</td>
+	<td>
+		<strong><?php echo $item->precio ?></strong>
+	</td>
+	<td>
+		<strong><?php echo $item->categoria ?></strong>
+	</td>
+	<td>
+		<?php echo link_to(array("catalogo/edit/$item->id/", img_tag('indice.jpg',"width: 40","height: 40","title: Editar libro"))); ?>
+		<?php echo link_to(array("catalogo/ver/$item->id/", img_tag('images2.jpg',"width: 40","height: 40","title: Ver libro"))); ?>
+		<font onclick="return confirmar();"><?php echo link_to(array("catalogo/del/$item->id/", img_tag('images3.jpg',"width: 40","height: 40","title: Eliminar libro"))); ?>
+		
+<script language="javascript">
+   function confirmar(){
+      return confirm("¿Realmente desea borrar este libro?")
+  }
+</script>
+    
+	</td>
+    
+    <?php endforeach; ?>
+    </table>
+	<?php echo link_to("catalogo/create",'Agregar nuevo libro','title: Agregar nuevo libro',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 0;"); ?>
+ 
+    <h5 align="center"><?php if($listCatalogo->prev) echo link_to(array("catalogo/index/$listCatalogo->prev/", '<< Anterior |')); ?>
+    <?php if($listCatalogo->next) echo link_to(array("catalogo/index/$listCatalogo->next/", 'Siguiente >>')); ?></h5><br/><br/>
+</div>
+

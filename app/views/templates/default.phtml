@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
+  <title>Tienda Virtual</title>  
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="menu.js"></script>
+  <?php echo stylesheet_link_tag('style') ?>
+  <?php echo stylesheet_link_tag('menu') ?>
+  <?php echo stylesheet_link_tag('exception') ?>
+  <?php echo stylesheet_link_tags('bienvenida'); ?>
+  
+  <?php echo javascript_include_tag("menu/jquery"); ?>
+  <?php echo javascript_include_tag("menu/menu"); ?>
+  <?php echo javascript_include_tag("jquery/jquery-ui-1.8.4.custom.min"); ?>
+  <?php echo javascript_include_tag("jquery/jquery.form"); ?>
+  <?php echo javascript_include_tag("custom"); ?>
+</head>
+<body>
+    <div id='content'>
+        <div id='head'>
+        	<a href="<?php echo PUBLIC_PATH ?>" title="Pagina de Inicio"><?php echo img_tag("mpm_logo_head.png", "alt: Logo")?></a>    
+        </div>
+		<div id='menu'>
+			<ul class="menu">
+				<li><a href="<?php echo PUBLIC_PATH ?>" title="Pagina de Inicio" class="parent"><span>Inicio</span></a>
+				</li>
+				<li><a href="<?php echo PUBLIC_PATH ?>usuario" class="parent"><span>Cat&aacute;logo</span></a>
+					<!--<div><ul>
+						<li><a href="#" class="parent"><span>Sub Item 1</span></a>
+							<div><ul>
+								<li><a href="#"><span>Sub Item 1.1</span></a></li>
+								<li><a href="#"><span>Sub Item 1.2</span></a></li>
+							</ul></div>
+						</li>
+						<li><a href="#" class="parent"><span>Sub Item 2</span></a>
+							<div><ul>
+								<li><a href="#"><span>Sub Item 2.1</span></a></li>
+								<li><a href="#"><span>Sub Item 2.2</span></a></li>
+							</ul></div>
+						</li>
+						<li><a href="#"><span>Sub Item 3</span></a></li>
+						<li><a href="#"><span>Sub Item 4</span></a></li>
+						<li><a href="#"><span>Sub Item 5</span></a></li>
+						<li><a href="#"><span>Sub Item 6</span></a></li>
+						<li><a href="#"><span>Sub Item 7</span></a></li>
+					</ul></div>-->
+				</li>
+				<li><a href="<?php echo PUBLIC_PATH ?>comprar"><span>Carrito de compras</span></a></li>
+				<li class="last"><a href="#" class="parent"><span>Acerca de</span></a>
+					<div><ul>
+								<li><a href="<?php echo PUBLIC_PATH ?>catalogo/acerca"><span>Acerca de Tienda Virtual</span></a></li>
+								<li><a href="<?php echo PUBLIC_PATH ?>catalogo/mision"><span>Misi&oacute;n</span></a></li>
+					</ul></div>
+				</li>
+			</ul>
+		</div>
+        <div id="body" class="ui1">
+        	<?php View::content(); ?>
+        </div>        
+        <div id="footer">
+        	Hecho por: grupo Tienda Virtual
+        </div>        
+    </div>
+</body>
+</html>
+

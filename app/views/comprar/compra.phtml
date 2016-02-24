@@ -1,0 +1,45 @@
+<?php View::content(); ?>
+<?php echo form_tag('comprar/verificar/') ?>
+<body link="#3191F7" vlink="#3191F7" alink="#3191F7">
+<table width="100%">
+	<tr>
+		<td>
+			<h2><?php echo link_to(array("", 'Inicio'));$num=100; ?> > 
+			<?php if(Session::get("userName")=='admin') echo link_to(array("catalogo", 'Cat&aacute;logo'))?>
+			<?php if(Session::get("userName")!='admin') echo link_to(array("usuario", 'Cat&aacute;logo'))?> > Carrito de compras</h2>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<h3>Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?>-
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></h3>
+			<?php }
+			else{?>
+			<h3>Usted no ha iniciado sesi&oacute;n-
+			<?php echo link_to("login",'Iniciar sesi&oacute;n');}?></h3>
+		</td>
+	</tr>
+	</table>
+
+<?php echo link_to("comprar/index",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 0;"); ?>
+<br/>
+
+<table border="0" width="70%" align="center" cellpadding="2">
+<tr>
+<td><strong>T&iacute;tular de la cuenta</strong></td>
+<td><?php echo text_field_tag("nombre") ?></td>
+</tr>
+<tr>
+<td><strong>N&uacute;mero de tarjeta</strong></td>
+<td><?php echo text_field_tag("numero") ?></td>
+</tr>
+<tr>
+<td><strong>Tipo de tarjeta</strong></td>
+<td><?php echo select_tag("tipo",array('Debito'=>'Debito','Credito'=>'Credito'))?></td>
+</tr>
+<tr>
+<td><strong>Clave</strong></td>
+<td><?php echo password_field_tag("pass") ?></td>
+</tr>
+</table>
+<?php echo submit_tag("Confirmar la compra")?>
+<?php echo end_form_tag()?>

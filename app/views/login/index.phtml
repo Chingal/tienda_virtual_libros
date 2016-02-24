@@ -1,0 +1,24 @@
+<br/><strong><?php echo link_to(array("", 'Inicio')) ?> > Inicio de sesi&oacute;n</strong>
+<div id="form" style="padding:10px;width:300px;">
+<?php View::Content(); ?>
+<?php echo form_tag("login/index","id: formLogin"); ?>
+<fieldset>
+	<div id="fields">
+		<p>
+			<label for="login">Usuario: </label>
+			<?php echo text_field_tag("login"); ?>
+		</p>
+		<p>
+			<label for="password">Password:</label>
+			<?php echo password_field_tag("password"); ?>
+		</p>
+		<div style="text-align:right;">
+			<?php echo submit_tag("Ingresar"); ?>
+		</div>
+	</div>
+</fieldset>
+<?php echo end_form_tag();?>
+</div>
+Si no est&aacute; registrado llene el formulario:
+<?php echo link_to("registrar",'Registrar','title: Registrarse',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 1em;"); ?>
+<br/>

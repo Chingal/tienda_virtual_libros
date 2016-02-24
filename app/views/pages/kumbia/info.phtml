@@ -1,0 +1,45 @@
+
+<div id="home_text" class="float-left-half">
+	
+<?php echo img_tag('dibujo.bmp','height: 285');?>
+
+	
+</div>
+<div class="float-right-quarter" style="margin-right: 3em;">
+	<?php if(Session::get("userName")=='admin'){?>
+	<?php $val='catalogo'?>
+	<?php }
+	else $val='usuario'?>
+		
+		
+	<?php if(Auth::is_valid()){?>
+	<h4 align="center">Usted ya ha iniciado sesi&oacute;n <?php echo link_to("$val", "Entrar al sitio","class: button", "style: display:block; float:none; width:95%; clear:both; margin:2em 2em 1em 0;") ?>
+	<?php echo link_to("login/logout",'Cerrar sesi&oacute;n',"class: button", "style: display:block; float:none; width:95%; clear:both; margin:2em 2em 1em 0;") ?></h4>
+	<?php }
+	else {?>
+	<div id="form" style="padding:10px;width:230px;">
+	<?php echo form_tag("login/index","id: formLogin"); ?>
+	<fieldset>
+		<div id="fields">
+			<p>
+				<label for="login">Usuario: </label>
+				<?php echo text_field_tag("login"); ?>
+			</p>
+			<p>
+				<label for="password">Password:</label>
+				<?php echo password_field_tag("password"); ?>
+			</p>
+			<div style="text-align:right;">
+				<?php echo submit_tag("Ingresar"); ?>
+			</div>
+		</div>
+	</fieldset>
+	<?php echo end_form_tag();?>
+	</div>
+	Si no est&aacute; registrado llene el formulario:
+	<?php echo link_to("registrar","title: Crea una cuenta","class: button", "style: display:block; float:none; width:95%; clear:both; margin:2em 2em 1em 0;") ?>
+	<?php }?>
+</div>
+
+<div class="empty">&nbsp;</div>
+<br/>

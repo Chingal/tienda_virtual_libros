@@ -1,0 +1,59 @@
+<?php View::content(); ?>
+<?php echo form_tag('catalogo/ver/') ?>
+<body link="#3191F7" vlink="#3191F7" alink="#3191F7">
+<table width="100%">
+	<tr>
+		<td>
+			<h2><?php echo link_to(array("", 'Inicio')) ?> > <?php echo link_to(array("catalogo", 'Cat&aacute;logo')) ?> > Ver informaci&oacute;n del libro</h2>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<h3>Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?>-
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></h3>
+			<?php }
+			else{?>
+			<h3>Usted no ha iniciado sesi&oacute;n<?php }?></h3>
+		</td>
+	</tr>
+	</table>
+	<?php echo link_to("catalogo",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 0;"); ?>
+
+<table height="330" width="50%">
+    <tr>
+        <td>T&iacute;tulo</td>
+        <td><?php echo $catalogo->titulo?></td>
+    </tr>
+	    <tr>
+        <td>ISBN</td>
+        <td><?php echo $catalogo->isbn?></td>
+    </tr>
+	    <tr>
+        <td>Autor</td>
+        <td><?php echo $catalogo->autor?></td>
+    </tr>
+	    <tr>
+        <td>Editorial</td>
+        <td><?php echo $catalogo->editorial?></td>
+    </tr>
+	    <tr>
+        <td>A&ntilde;o de publicaci&oacute;n</td>
+        <td><?php echo $catalogo->anio?></td>
+    </tr>
+	    <tr>
+        <td>Categor&iacute;a</td>
+        <td><?php echo $catalogo->categoria?></td>
+    </tr>
+	    <tr>
+        <td>Precio</td>
+        <td><?php echo $catalogo->precio?></td>
+    </tr>
+	 <tr>
+        <td>Cantidad</td>
+        <td><?php echo $catalogo->cantidad?></td>
+    </tr>
+    <tr>
+        <td>Resumen</td>
+        <td><?php echo $catalogo->resumen?></td>
+    </tr>     
+    
+</table>

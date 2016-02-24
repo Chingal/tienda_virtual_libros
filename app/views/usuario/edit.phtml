@@ -1,0 +1,52 @@
+<?php View::content(); ?>
+<?php echo form_tag('usuario/edit/') ?>
+<body link="#3191F7" vlink="#3191F7" alink="#3191F7">
+<table width="100%">
+	<tr>
+		<td>
+			<h2><?php echo link_to(array("", 'Inicio')) ?> > 
+			<?php if(Session::get("userName")=='admin') echo link_to(array("catalogo", 'Cat&aacute;logo'))?>
+			<?php if(Session::get("userName")!='admin') echo link_to(array("usuario", 'Cat&aacute;logo'))?> > Editar datos de usuario</h2>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<h3>Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?>-
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></h3>
+			<?php }
+			else{?>
+			<h3>Usted no ha iniciado sesi&oacute;n<?php }?></h3>
+		</td>
+	</tr>
+	</table>
+	
+<?php if(Session::get("userName")=='admin'){?>
+<?php echo link_to("catalogo",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 2em 0;"); ?>
+<?php }else{?>
+<?php echo link_to("usuario",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 2em 0;"); ?>
+<?php }?>
+
+<font size="4">Los campos marcados con (*) son obligatorios</font><br/>
+<table width="50%" cellpadding="4">
+    <tr>
+        <td><font size="4">(*)Nombre</font></td>
+        <td><?php echo text_field_tag(array('usuario.nombre')) ?></td>
+    </tr>
+	<tr>
+        <td><font size="4">(*)Apellido</font></td>
+        <td><?php echo text_field_tag(array('usuario.apellido')) ?></td>
+    </tr>
+	<tr>
+        <td><font size="4">(*)Correo</font></td>
+        <td><?php echo text_field_tag(array('usuario.correo')) ?></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><?php echo submit_tag('Actualizar') ?></td>
+    </tr>
+</table>
+<?php echo hidden_field_tag(array('usuario.id')) ?>
+<?php echo hidden_field_tag(array('usuario.password')) ?>
+<?php echo hidden_field_tag(array('usuario.login')) ?>
+<?php echo link_to("usuario/change_pass/$user->id",'Cambiar password','title: Cambiar la contrasena',"class: button", "style: display:block; float:none; height:100; width:20%; clear:both; margin:2em 2em 1em 0") ?></strong>
+<?php echo end_form_tag()?>
+</body>

@@ -1,0 +1,35 @@
+<br/><strong><?php echo link_to(array("", 'Inicio')) ?> > Registro</strong>
+<?php
+ View::content();
+?>
+
+<br/><br/>
+<?php echo form_tag("registrar/index")?>
+<fieldset>
+	<label for="txt_nombre">Login</label>
+	<?php echo text_field_tag("usuario.login","id: txt_login")?>
+</fieldset>
+<fieldset>
+	<label for="txt_nombre">Nombre</label>
+	<?php echo text_field_tag("usuario.nombre","id: txt_nombre")?>
+</fieldset>
+<fieldset>
+	<label for="txt_nombre">Apellido</label>
+	<?php echo text_field_tag("usuario.apellido","id: txt_apellido")?>
+</fieldset>
+<fieldset>
+	<label for="txt_mail">Correo</label>
+	<?php echo text_field_tag("usuario.correo","id: txt_correo")?>
+</fieldset>
+<fieldset>
+	<label for="txt_password">Password</label>
+	<?php echo password_field_tag("usuario.password","id: txt_password")?>
+</fieldset>
+<fieldset>
+	<label for="txt_npass">Confirmar Password</label>
+	<?php echo password_field_tag("Npass","id: txt_Npass")?>
+</fieldset>
+<?php echo submit_tag("Aceptar") ?>
+<!--<input type="submit" value="Aceptar" />-->
+
+<?php echo end_form_tag() ?>

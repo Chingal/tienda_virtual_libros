@@ -1,0 +1,66 @@
+<?php View::content(); ?>
+<?php echo form_tag('catalogo/edit/') ?>
+<body link="#3191F7" vlink="#3191F7" alink="#3191F7">
+<table width="100%">
+	<tr>
+		<td>
+			<h2><?php echo link_to(array("", 'Inicio')) ?> > <?php echo link_to(array("catalogo", 'Cat&aacute;logo')) ?> > Editar datos del libro</h2>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<h3>Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?>-
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></h3>
+			<?php }
+			else{?>
+			<h3>Usted no ha iniciado sesi&oacute;n<?php }?></h3>
+		</td>
+	</tr>
+	</table>
+	<?php echo link_to("catalogo",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 0;"); ?>
+Los campos marcados con (*) son obligatorios
+<table>
+    <tr>
+        <td>(*)T&iacute;tulo</td>
+        <td><?php echo text_field_tag(array('catalogo.titulo')) ?></td>
+    </tr>
+	    <tr>
+        <td>(*)ISBN</td>
+        <td><?php echo text_field_tag(array('catalogo.isbn')) ?></td>
+    </tr>
+	    <tr>
+        <td>(*)Autor</td>
+        <td><?php echo text_field_tag(array('catalogo.autor')) ?></td>
+    </tr>
+	    <tr>
+        <td>(*)Editorial</td>
+        <td><?php echo text_field_tag(array('catalogo.editorial')) ?></td>
+    </tr>
+	    <tr>
+        <td>(*)A&ntilde;o de publicaci&oacute;n</td>
+        <td><?php echo text_field_tag(array('catalogo.anio')) ?></td>
+    </tr>
+	    <tr>
+        <td>(*)Categor&iacute;a</td>
+        <td><?php echo select_tag("catalogo.categoria",array('Generalidades'=>'Generalidades','Filosofia'=>'Filosofia','Religion'=>'Religion','Ciencias Sociales'=>'Ciencias Sociales','Matematicas'=>'Matematicas','Ciencias Aplicadas'=>'Ciencias Aplicadas','Lenguaje'=>'Lenguaje','Novela'=>'Novela','Quimica'=>'Quimica')) ?>		</td>
+    </tr>
+	    <tr>
+        <td>(*)Precio</td>
+        <td><?php echo text_field_tag(array('catalogo.precio')) ?></td>
+    </tr>
+
+    <tr>
+        <td>(*)Resumen</td>
+        <td><?php echo text_field_tag(array('catalogo.resumen')) ?></td>
+    </tr>     
+	<tr>
+        <td>(*)Cantidad</td>
+        <td><?php echo text_field_tag(array('catalogo.cantidad')) ?></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+		<?php echo hidden_field_tag(array('catalogo.cantidad')) ?>
+        <?php echo hidden_field_tag(array('catalogo.id')) ?>
+        <td><?php echo submit_tag('Actualizar') ?></td>
+    </tr>
+</table>
+<?php echo end_form_tag() ?>

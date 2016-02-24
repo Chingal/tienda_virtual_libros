@@ -1,0 +1,10 @@
+<?php
+    Load::lib('fpdf');
+    $pdf=new FPDF();
+    $pdf->AliasNbPages();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',20);
+    $pdf->SetXY(0,20);
+    $pdf->Cell(209,18,$var[1],0,0,'C');
+    $pdf->Output();
+?>

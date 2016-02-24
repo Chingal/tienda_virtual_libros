@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+	<head>
+		<meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
+		<title>Version Beta Venta de Libros</title>
+		<?php echo stylesheet_link_tag('style') ?>
+		<?php echo stylesheet_link_tag('exception') ?>
+		<?php echo stylesheet_link_tag('bienvenida') ?>		
+		<?php echo stylesheet_link_tags(); ?>
+	</head>
+	<body leftmargin="0" topmargin="0" background="img/background.jpg">
+	<?php echo link_to("catalogo",'Administrador'); ?></h3>
+					<?php echo link_to("usuario",'Usuario'); ?></h3>
+					<?php echo link_to("usuario/index_carrito","Carrito de compras") ?>
+		<table height="123" width="587" cellpadding="0" cellspacing="0" border="0">
+			<tr valign="top">
+				<!----- insert logo below ------------------------------------------>
+				<td id="header" ><img src="img/templogo.jpg"  alt=""></td><td></td><td></td>
+				<!------------------------------------------------------------------
+				<td id="header1" width="100%" background="img/topbg.jpg">&nbsp;</td>-->
+			</tr>
+		</table>
+		<table height="40" width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr valign="top">
+				<td id="header3" width="100%" background="img/topbar.jpg">&nbsp;</td>
+			</tr>
+		</table>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr valign="top">
+				<td width="201"><br/>
+				<!----- menu, insert links below ------------------------------------------>
+					<font id="menu1"><img src="img/menubar.jpg" width="201" height="11" ><br/></font>
+					Inicio de Sesi&oacute;n
+					<?php echo form_tag("login/index","id: formLogin"); ?>
+					
+					<div id="fields">
+					<p>
+						<em>*</em>
+						<label for="login"> Usuario: </label>
+						<?php echo text_field_tag("login"); ?>
+					</p>
+					<p>
+						<em>*</em>
+						<label for="password"> Password:</label>
+						<?php echo password_field_tag("password"); ?>
+					</p>
+					<div style="text-align:left;">
+					<?php echo submit_tag("Ingresar"); ?>
+					</div>
+					</div>
+					<?php echo end_form_tag(); ?>
+							<font id="menu1"><img src="img/menubar.jpg" width="201" height="11" ><br/></font>
+					
+					
+					<!-------------------------------------------------------------------------->
+				</td>
+				<td width="100%">
+					<table width="100%" cellpadding="10" cellspacing="0" border="0">
+						<tr valign="top">
+							<td>
+								<!----- content, insert text and content below ------------------------------------------>
+								<p></p>
+								<?php View::content(); ?>
+								<!--------------------------------------------------------------------------------------->
+								<p align="center">
+									<!--This site is &copy; Copyright YourName 2004-2005, All Rights Reserved<BR>
+									<a href="http://www.steves-templates.com" title="Free website templates" class="style2">Free website templates</a>-->
+								</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+

@@ -1,0 +1,82 @@
+<?php View::content(); ?>
+<?php echo form_tag('usuario/ver') ?>
+<body link="#3191F7" vlink="#3191F7" alink="#3191F7">
+<table width="100%">
+	<tr>
+		<td>
+			<h2><?php echo link_to(array("", 'Inicio')) ?> > <?php echo link_to(array("usuario", 'Cat&aacute;logo')) ?> > Ver informaci&oacute;n del libro</h2>
+		</td>
+		<td align="right">
+			<?php if(Auth::is_valid()){?>
+			<h3>Usted ha iniciado sesi&oacute;n como: <?php echo link_to(array("usuario/edit/$user->id/", "$user->nombre")) ?>-
+			<?php echo link_to("comprar/index",'Ir al carrito'); ?> -
+			<?php echo link_to("login/logout",'Cerrar sesi&oacute;n'); ?></h3>
+			<?php }
+			else{?>
+			<h3>Usted no ha iniciado sesi&oacute;n - 
+			<?php echo link_to("comprar/index",'Ir al carrito'); ?> -
+			<?php echo link_to("",'Iniciar sesi&oacute;n');}?></h3>
+		</td>
+	</tr>
+	</table>
+	<?php echo end_form_tag() ?>
+	<?php echo link_to("usuario",'Atr&aacute;s','title: Regresar al catalogo',"class: button", "style: display:block; float:none; width:20%; clear:both; margin:2em 2em 1em 0;"); ?>
+
+<table border="0">
+	<tr>
+		<td>
+			<?php echo img_tag('upload/'.$catalogo->img,"width: 400","height: 500"); ?>
+		</td>
+		<td>
+			<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td><strong>T&iacute;tulo:</strong> <?php echo $catalogo->titulo?></td>
+			</tr>
+		 
+	    <tr>
+        <td><strong>ISBN:</strong>
+        <?php echo $catalogo->isbn?></td></tr>
+    
+	    <tr>
+        <td><strong>Autor:</strong>
+        <?php echo $catalogo->autor?></td></tr>
+    
+	    <tr>
+        <td><strong>Editorial:</strong>
+        <?php echo $catalogo->editorial?></td></tr>
+    
+	    <tr>
+        <td><strong>A&ntilde;o de publicaci&oacute;n:</strong>
+        <?php echo $catalogo->anio?></td></tr>
+    
+	    <tr>
+        <td><strong>Categor&iacute;a:</strong>
+        <?php echo $catalogo->categoria?></td></tr>
+    
+	    <tr>
+        <td><strong>Precio:</strong>
+        $<?php echo $catalogo->precio?></td></tr>
+    
+		<tr>
+        <td><strong>Resumen: </strong>
+        <?php echo $catalogo->resumen?></td></tr>
+		
+		<tr>    
+		<?php echo form_tag('comprar/agregar2') ?>
+        <td><strong>Cantidad: </strong>
+        <?php echo text_field_tag("nombre") ?></td></tr>
+    
+		<tr>
+		<td>
+	
+		<?php echo submit_image_tag("subir", "carrito.jpg", "title: Agregar al carrito", "border: 0")?>
+		</td></tr>
+			</table>
+		</td>
+		
+	</tr>
+</table>
+<?php echo hidden_field_tag("cod", "value: $catalogo->id") ?>
+<?php echo end_form_tag() ?>
+			
+	

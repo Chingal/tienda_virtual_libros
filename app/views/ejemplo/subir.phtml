@@ -1,0 +1,13 @@
+<?php View::content(); ?>
+ 
+<h3>Agregar Foto:</h3>
+ 
+<?php echo form_tag("ejemplo/subir","enctype: multipart/form-data")?>
+ 
+<p><label>Imagen:</label><?php echo file_field_tag("foto"); ?></p>
+ 
+<?php echo submit_tag("Agregar") ?>
+ 
+<?php echo end_form_tag() ?>
+
+<?php echo text_field_tag(array('catalogo.cantidad')) ?>
